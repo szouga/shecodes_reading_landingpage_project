@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading ~ My Hobby</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        /* Stacks the gradients: top one is list item 1, bottom is list item 2 */
+        background-image:
+          linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%),
+          linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
+
+        /* Ensures both gradients cover the whole area */
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      h1 {
+        text-align: center;
+        font-family:
+          "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      h2 {
+        text-align: center;
+        font-family:
+          "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      img {
+        max-width: 100%;
+      }
+      p {
+        font-size: 18px;
+        line-height: 1.5;
+        font-family: "serif";
+        font-weight: 100;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: #f0f0f0;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      button {
+        display: block;
+        margin: 0 auto;
+        border: 1px solid plum;
+        background: white;
+        font-size: 20px;
+        border-radius: 6px;
+        padding: 10px 15px;
+        transition: all 150ms ease-in-out;
+      }
+      button:hover {
+        background: plum;
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.8);
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      footer {
+        text-align: center;
+        margin: 10px 0;
+        font-size: 18px;
+      }
+      .theme-button {
+        font-size: 12px;
+        background: black;
+        color: white;
+        padding: 5px 8px;
+      }
+      .theme-button:hover {
+        color: black;
+        background: white;
+      }
+      .container-michelle-obama {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .michelle-obama {
+        border-radius: 10px;
+        transition:
+          transform 150ms ease-in-out,
+          filter 150ms ease-in-out;
+        background: #acc5c6;
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        z-index: 1;
+      }
+      .michelle-obama:hover {
+        filter: contrast(120%);
+        transform: scale(1.2);
+        z-index: 10; /*lifts it over other images*/
+      }
+      .the-giver {
+        border-radius: 10px;
+        transition: all 150ms ease-in-out;
+        background: #f8c960;
+        position: relative; /* Required for the shine to position itself */
+        overflow: hidden; /* Clips the shine so it doesn't leak out */
+        padding: 1em;
+        display: inline-block;
+      }
+      /* Create the shine element */
+      .the-giver::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -150%; /* Start completely hidden to the left */
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.4) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(45deg);
+        transition: left 600ms ease-in-out; /* The speed of the shine */
+        pointer-events: none; /* Prevents the shine from blocking clicks */
+      }
+      .the-giver:hover::after {
+        left: 150%; /*moves the shine effect across to the right*/
+      }
+      .called-us-enemy {
+        border-radius: 10px;
+        transition: all 150ms ease-in-out;
+        background: #505183;
+        position: relative;
+        padding: 1em;
+        overflow: hidden;
+        display: inline-block;
+        z-index: 1;
+      }
+      .called-us-enemy:hover {
+        filter: contrast(120%);
+        transform: scale(1);
+        z-index: 10; /*lifts it over other images*/
+      }
+      .greek-mythology {
+        border-radius: 10px;
+        transition: all 150ms ease-in-out;
+        background: #06c2f0;
+        position: relative; /* Required for the shine to position itself */
+        overflow: hidden; /* Clips the shine so it doesn't leak out */
+        padding: 1em;
+        display: inline-block;
+        margin: 0 auto;
+      }
+      /* Create the shine element */
+      .greek-mythology::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -150%; /* Start completely hidden to the left */
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.4) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(45deg);
+        transition: left 600ms ease-in-out; /* The speed of the shine */
+        pointer-events: none; /* Prevents the shine from blocking clicks */
+      }
+      .greek-mythology:hover::after {
+        left: 150%; /*moves the shine effect across to the right*/
+      }
+      .tokyo-revengers {
+        border-radius: 10px;
+        transition: all 150ms ease-in-out;
+        background: #c3a833;
+        position: relative;
+        padding: 1em;
+        overflow: hidden;
+        display: inline-block;
+        z-index: 1;
+      }
+      .tokyo-revengers:hover {
+        filter: contrast(120%);
+        transform: scale(1);
+        z-index: 10; /*lifts it over other images*/
+      }
+      .grid {
+        margin: 15px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 15px;
+        /*grid-template-columns: repeat(2, 300px);*/
+      }
+      .grid img {
+        width: 100%;
+        border-radius: 8px;
+        /*object-fit: cover;
+        aspect-ratio: ;
+        ^use above when have images with different sizes to make them fit*/
+      }
+      .change-theme {
+        background: purple;
+        color: black;
+      }
+      .change-theme .container {
+        background: rgba(255, 255, 255, 0.8);
+      }
+      .change-theme a {
+        color: plum;
+      }
+      .read-button {
+        /* Proportions */
+        width: 120px;
+        height: 160px;
+
+        /* Book Colors & Text */
+        background-color: #8b4513; /* Classic leather brown background */
+        font-family: "serif"; /* Serif fonts feel more "literary" */
+        color: #5d4037; /* Dark cover-like color */
+        text-shadow:
+          -1px -1px 1px rgba(0, 0, 0, 0.5),
+          /* Dark top/left shadow */ 1px 1px 1px rgba(255, 255, 255, 0.3); /* Light bottom/right highlight */
+        /* Spine & Corners */
+        border: none;
+        border-radius: 2px 8px 8px 2px; /* Square left, rounded right */
+        border-left: 12px solid rgba(0, 0, 0, 0.2); /* The Spine */
+
+        /* Depth / Pages */
+        box-shadow:
+          3px 0px 0px #e6d9c4,
+          /* First page layer */ 6px 0px 0px #d2c1a5,
+          /* Second page layer */ 10px 10px 15px rgba(0, 0, 0, 0.3); /* Final shadow on the table */
+
+        cursor: none;
+        transition: transform 0.2s ease;
+      }
+
+      .read-button:hover {
+        transform: rotate(-5deg) translateY(-5px); /* "Lifting" the book effect */
+        color: white; /* Off-white page color for text */
+        text-shadow:
+          0 0 7px #fff,
+          /* Tight inner white glow */ 0 0 10px #fff,
+          0 0 21px #fff,
+          0 0 42px #d4af37,
+          /* Golden magical aura */ 0 0 82px #d4af37,
+          0 0 92px #d4af37;
+      }
+      .bookmark-container {
+        position: relative;
+        width: 200px;
+        height: 300px;
+        display: block;
+        margin: 0 auto;
+        place-items: center;
+        perspective: 1000px; /* Gives the 3D effect depth */
+      }
+
+      .bookmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        /* Layering texture + your magical gradient */
+        background:
+          url("https://transparenttextures.com"),
+          linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
+        background-color: #cd9cf2; /* Fallback color */
+
+        /*Text Styling*/
+        font-family: "serif"; /* Serif fonts feel more "literary" */
+        text-shadow:
+          -1px -1px 1px rgba(0, 0, 0, 0.5),
+          /* Dark top/left shadow */ 1px 1px 1px rgba(255, 255, 255, 0.9); /* Light bottom/right highlight */
+        color: plum;
+        /*layout and peel*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          transform 1.5s ease,
+          opacity 1s ease,
+          /* Controls the "slow" speed */ box-shadow 1.5s ease;
+        transform-origin: left; /* Peels from the left like a page */
+        z-index: 2;
+        cursor: pointer;
+
+        /*PREVENT DISAPPEARING: Ensures the "back" of the paper stays visible */
+        backface-visibility: visible;
+        transform-style: preserve-3d;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .bookmark-container:hover .bookmark {
+        transform: rotateY(-110deg); /* The "peel" angle */
+        box-shadow: 15px 0 30px rgba(0, 0, 0, 0.2);
+      }
+      .magical-background {
+        position: fixed;
+        bottom: -100%; /*Hidden off-screen at the bottom*/
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1689573966656-32d887015f08?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-size: cover;
+        background-position: center;
+        transition: bottom 2s cubic-bezier(0.25, 1, 0.5, 1); /*Smooth "upward" glide*/
+        z-index: -1; /*stay behind the bookmark*/
+      }
+      /*trigger the background image*/
+      .magical-background.show {
+        bottom: 0;
+      }
+    </style>
+    <button class="theme-button">Change Theme</button>
+  </head>
+  <body>
+    <!--Build a landing page about one of your hobbies: 
+        Reading
+    />-->
+    <div class="container">
+      <h1>Reading</h1>
+      <h2>My Library 📚</h2>
+      <h5 style="text-align: center"><em>Just finished reading</em></h5>
+      <div class="container-michelle-obama">
+        <a href="https://michelleobamabooks.com/becoming#top" target="_blank">
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/180/016/original/27b0348a-3991-4c2a-8237-e9bd8d7db32d.png?1778489132 "
+            alt="Becoming by Michelle Obama"
+            width="300"
+            height="200"
+            class="michelle-obama"
+          />
+        </a>
+      </div>
+      <h5 style="text-align: center"><em>Childhood books</em></h5>
+      <div class="grid">
+        <div class="the-giver">
+          <img
+            src="https://www.publishersweekly.com/cover/9780395645666"
+            alt="The Giver by Lois Lowry"
+            width="300"
+            height="400"
+          />
+        </div>
+        <div class="greek-mythology">
+          <img
+            src="https://prodimage.images-bn.com/pimages/9780763642914_p2_v3_s600x595.jpg"
+            alt="The Mythology Handbook: An Introduction to the Greek Myths by Hestia Evans"
+            width="300"
+            height="400"
+          />
+        </div>
+      </div>
+      <h5 style="text-align: center"><em>Graphic Novels</em></h5>
+      <div class="grid">
+        <div class="called-us-enemy">
+          <img
+            src="https://idwpublishing.com/cdn/shop/files/They_CAlled_Us_Enemy_Expanded_Edition_frontangle_2x3_1aa8c2e6-89b9-4279-9cb7-6b3a76d43677.jpg?v=1733860018&width=2170"
+            alt="They Called Us Enemy by George Takei"
+            width="300"
+            height="400"
+          />
+        </div>
+        <div class="tokyo-revengers">
+          <img
+            src="https://prodimage.images-bn.com/pimages/9798891604858_p0_v1_s192x300.jpg"
+            alt="Tokyo Revengers Manga"
+            width="300"
+            height="400"
+          />
+        </div>
+      </div>
+      <div class="bookmark-container">
+        <p><em>Some of the best books don't come from a library</em></p>
+        <div class="bookmark">Hover to Reveal</div>
+      </div>
+      <br />
+      <br />
+      <button class="read-button">The End</button>
+    </div>
+    <footer>
+      Coded by
+      <a href="https://github.com/szouga" target="_blank"
+        >Sophie Clement Zouga Ndong</a
+      >
+    </footer>
+    <!--Hide the background image below until activated-->
+    <div class="magical-background"></div>
+    <script>
+      let body = document.querySelector("body");
+      let themeButton = document.querySelector(".theme-button");
+      let bookmark = document.querySelector(".bookmark");
+      let bookmarkContainer = document.querySelector(".bookmark-container");
+      let magicalBackgroundImage = document.querySelector(
+        ".magical-background",
+      );
+      let footer = document.querySelector("footer");
+
+      function changeTheme() {
+        body.classList.toggle("change-theme");
+        //or if want to change the theme can also just use this line instead of an if statement:
+        //body.classList.toggle("change-theme");
+
+        //reset the magical background whenever the theme changes
+        magicalBackgroundImage.classList.remove("show");
+
+        //change the text on the bookmark cover
+        if (body.classList.contains("change-theme")) {
+          bookmark.innerHTML = `Click to Unlock Magic`;
+        } else {
+          bookmark.innerHTML = `Hover to Reveal`;
+        }
+      }
+      themeButton.addEventListener("click", changeTheme);
+
+      bookmarkContainer.addEventListener("click", function () {
+        //Only trigger if dark mode is active//
+        if (body.classList.contains("change-theme")) {
+          magicalBackgroundImage.classList.add("show");
+          footer.innerHTML = `
+          <footer style="background:white; padding: 2px 5px; border-radius:4px;">
+            Coded by 
+          <a href="https://github.com/szouga" 
+          target="_blank" style="color:purple">
+          Sophie Clement Zouga Ndong</a>
+          </footer>`;
+        }
+      });
+    </script>
+  </body>
+</html>
